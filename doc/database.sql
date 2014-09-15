@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2014 at 02:06 PM
+-- Generation Time: Sep 15, 2014 at 11:38 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -40,6 +40,45 @@ INSERT INTO `post` (`post_id`, `post_subject`, `post_text`, `post_created`, `use
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `post_tags`
+--
+
+DROP TABLE IF EXISTS `post_tags`;
+CREATE TABLE IF NOT EXISTS `post_tags` (
+  `post_id` int(11) unsigned NOT NULL,
+  `tag_id` int(11) unsigned NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `post_tags`
+--
+
+INSERT INTO `post_tags` (`post_id`, `tag_id`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tag`
+--
+
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE IF NOT EXISTS `tag` (
+`tag_id` int(10) unsigned NOT NULL,
+  `tag_name` int(25) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `tag`
+--
+
+INSERT INTO `tag` (`tag_id`, `tag_name`) VALUES
+(1, 0),
+(2, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -69,6 +108,18 @@ ALTER TABLE `post`
  ADD PRIMARY KEY (`post_id`), ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `post_tags`
+--
+ALTER TABLE `post_tags`
+ ADD PRIMARY KEY (`post_id`,`tag_id`);
+
+--
+-- Indexes for table `tag`
+--
+ALTER TABLE `tag`
+ ADD PRIMARY KEY (`tag_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -83,6 +134,11 @@ ALTER TABLE `user`
 --
 ALTER TABLE `post`
 MODIFY `post_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tag`
+--
+ALTER TABLE `tag`
+MODIFY `tag_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
