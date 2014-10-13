@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2014 at 08:27 AM
+-- Generation Time: Oct 13, 2014 at 01:20 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
   `comment_text` text NOT NULL,
   `comment_author` varchar(255) NOT NULL,
-  `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comment_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `comment_id` int(10) unsigned NOT NULL,
   `post_id` int(11) unsigned NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `post` (
 
 INSERT INTO `post` (`post_id`, `post_subject`, `post_text`, `post_created`, `user_id`) VALUES
 (2, 'teema1', 'bla', '2014-09-15 10:22:36', 1),
-(3, 'teema2', 'bla2', '2014-09-15 10:22:36', 1);
+(3, 'teema2', 'bla2', '2014-09-15 10:45:36', 1);
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,8 @@ CREATE TABLE IF NOT EXISTS `post_tags` (
 --
 
 INSERT INTO `post_tags` (`post_id`, `tag_id`) VALUES
-(1, 1);
+(2, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,7 @@ INSERT INTO `post_tags` (`post_id`, `tag_id`) VALUES
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE IF NOT EXISTS `tag` (
 `tag_id` int(10) unsigned NOT NULL,
-  `tag_name` int(25) NOT NULL
+  `tag_name` varchar(250) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -102,9 +103,9 @@ CREATE TABLE IF NOT EXISTS `tag` (
 --
 
 INSERT INTO `tag` (`tag_id`, `tag_name`) VALUES
-(1, 0),
-(2, 0),
-(3, 0);
+(1, 'esimene'),
+(2, 'teine'),
+(3, 'kolmas');
 
 -- --------------------------------------------------------
 
@@ -141,13 +142,13 @@ ALTER TABLE `comment`
 -- Indexes for table `post`
 --
 ALTER TABLE `post`
- ADD PRIMARY KEY (`post_id`), ADD KEY `user_id` (`user_id`);
+ ADD PRIMARY KEY (`post_id`), ADD KEY `user_id` (`user_id`), ADD KEY `post_subject` (`post_subject`);
 
 --
 -- Indexes for table `post_tags`
 --
 ALTER TABLE `post_tags`
- ADD PRIMARY KEY (`post_id`,`tag_id`);
+ ADD PRIMARY KEY (`post_id`,`tag_id`), ADD KEY `tag_id` (`tag_id`);
 
 --
 -- Indexes for table `tag`
@@ -200,4 +201,11 @@ ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post
 --
 ALTER TABLE `post`
 ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `post_tags`
+--
+ALTER TABLE `post_tags`
+ADD CONSTRAINT `post_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
+ADD CONSTRAINT `post_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`tag_id`);
 SET FOREIGN_KEY_CHECKS=1;
