@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
   `comment_text` text NOT NULL,
   `comment_author` varchar(255) NOT NULL,
-  `comment_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `comment_id` int(10) unsigned NOT NULL,
   `post_id` int(11) unsigned NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
