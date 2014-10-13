@@ -13,7 +13,7 @@ class users extends Controller {
     }
     function view(){
         $user_id = $this->params[0];
-        $this->users = get_first("SELECT * FROM user WHERE user_id = '$user_id'");
+        $this->user = get_first("SELECT * FROM user WHERE user_id = '$user_id'");
     }
 
 } 

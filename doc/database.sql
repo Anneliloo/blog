@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2014 at 04:37 PM
+-- Generation Time: Oct 13, 2014 at 08:08 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
   `comment_text` text NOT NULL,
   `comment_author` varchar(255) NOT NULL,
-  `comment_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `comment_id` int(10) unsigned NOT NULL,
   `post_id` int(11) unsigned NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `comment`
@@ -40,7 +40,8 @@ INSERT INTO `comment` (`comment_text`, `comment_author`, `comment_date`, `commen
 ('kdosa', 'Klaabu', '2014-09-17 17:32:44', 5, 2),
 ('kdosa', 'Klaabu', '2014-09-17 17:33:31', 6, 2),
 ('kdosa', 'Klaabu', '2014-09-17 17:34:16', 7, 2),
-('kirjuta', 'Klaabu', '2014-09-17 17:34:33', 8, 3);
+('kirjuta', 'Klaabu', '2014-09-17 17:34:33', 8, 3),
+('sa', 'Klaabu', '2014-10-06 16:40:55', 9, 2);
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,7 @@ DROP TABLE IF EXISTS `tag`;
 CREATE TABLE IF NOT EXISTS `tag` (
 `tag_id` int(10) unsigned NOT NULL,
   `tag_name` int(25) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tag`
@@ -102,7 +103,8 @@ CREATE TABLE IF NOT EXISTS `tag` (
 
 INSERT INTO `tag` (`tag_id`, `tag_name`) VALUES
 (1, 0),
-(2, 0);
+(2, 0),
+(3, 0);
 
 -- --------------------------------------------------------
 
@@ -167,7 +169,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-MODIFY `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `post`
 --
@@ -177,7 +179,7 @@ MODIFY `post_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
-MODIFY `tag_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `tag_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --
