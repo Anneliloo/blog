@@ -1,17 +1,12 @@
-<? foreach ($tags as $tag): ?><a href="tags/viev/<?=$tag['tag_name']?>"><span class="label label-info"<?= $tag['tag_name'] ?> </span>
+<? foreach ($tags as $tag): ?><a href="tags/view/<?=$tag['tag_name']?>"><span class="label label-info"><?= $tag['tag_name'] ?> </span>
     </a><? endforeach ?>
-<div class="span8">
-    <h1> <?= $post['post_subject'] ?> </h1>
+<div class="span8"> <h1><?= $post['post_subject'] ?></h1>
 
-    <p> <?= $post['post_text'] ?> </p>
+    <p><?= $post['post_text'] ?></p>
+    <p><?= $post['user_id'] ?></p>
+    <div> <span class="badge badge-success"><p><?=$post['post_created']?></p></span>
 
-    <div>
-        <span class="badge badge-success">Posted 2012-08-02 20:47:04</span>
-
-        <div class="pull-right"><span class="label">alice</span> <span class="label">story</span> <span class="label">blog</span>
-            <span class="label">personal</span></div>
     </div>
-</div>
 </div>
 
 <div class="container">
